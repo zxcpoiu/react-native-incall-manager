@@ -44,6 +44,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.Promise;
@@ -752,7 +753,18 @@ public class InCallManagerModule extends ReactContextBaseJavaModule implements L
             audioManager.setSpeakerphoneOn(enable);
         }
     }
-
+  @ReactMethod
+       public void getaudioroutes(Callback cb) {
+        try {
+            updateAudioDeviceState();
+            cb.invoke(null, audioDevices.toString());
+          } catch (Exception e) {
+            cb.invoke(e.toString(), null);
+        }
+    }
+    
+    
+    
     // --- TODO (zxcpoiu): These two api name is really confusing. should be changed.
     /**
      * flag: Int
