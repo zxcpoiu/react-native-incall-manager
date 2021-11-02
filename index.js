@@ -53,6 +53,10 @@ class InCallManager {
             return null;
         }
     }
+    
+    getaudioroutes(){
+        _InCallManager.getaudioroutes();
+    }
 
     setFlashOn(enable, brightness) {
         if (Platform.OS === 'ios') {
